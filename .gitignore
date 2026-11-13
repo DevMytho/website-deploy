@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# contact form submissions (user data, never commit)
+/data/
+
+# local dev artifacts
+.dev*.log
+.served.css
+/.registry/
+/refs/
+/image.jpg
+/public/images/image.jpg
+/AGENTS.md

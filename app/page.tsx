@@ -1,3 +1,5 @@
-export default function Home() {
-	return <main>Wayne Website</main>;
+import { redirect } from "next/navigation";
+
+export default function HomePage() {
+	redirect("/analysis");
 }
