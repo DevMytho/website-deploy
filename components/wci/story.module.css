@@ -1,0 +1,1143 @@
+.story {
+  --chapter-progress: 0.5;
+  --story-progress: 0;
+  background: #0c0c0c;
+  color: #eee;
+  border-block: 1px solid #292929;
+  padding: 95px 0 0;
+  position: relative;
+}
+.storyIntro,
+.storyBody,
+.storyOutro {
+  width: min(1240px, calc(100% - 112px));
+  margin-inline: auto;
+}
+.eyebrow {
+  font:
+    9px/1.7 "Courier New",
+    monospace;
+  letter-spacing: 0.14em;
+  color: #999;
+  margin-bottom: 20px !important;
+}
+.story .storyIntro h2 {
+  font-size: clamp(35px, 3.3vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+.story .storyIntro h2 span {
+  color: #868686;
+}
+.storyIntro > p:not(.eyebrow) {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #aaa;
+  max-width: 430px;
+  margin-top: 24px !important;
+}
+.storyDisclaimer {
+  margin-top: 24px;
+  font:
+    8px/1.7 "Courier New",
+    monospace;
+  letter-spacing: 0.08em;
+  color: #777;
+}
+.storyBody {
+  margin-top: 45px;
+}
+.chapterList {
+  min-width: 0;
+}
+.chapter {
+  padding: 40px 0 50px;
+  border-top: 1px solid #303030;
+  scroll-margin-top: 40px;
+}
+.chapterCopy {
+  max-width: 580px;
+}
+.chapterKicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font:
+    9px/1.7 "Courier New",
+    monospace;
+  letter-spacing: 0.1em;
+  color: #a0a0a0;
+}
+.chapterKicker > span {
+  font-size: 11px;
+  color: #fff;
+  border: 1px solid #555;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+}
+.story .chapter h3 {
+  font-size: clamp(27px, 2.6vw, 38px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.14;
+  margin-top: 26px !important;
+}
+.chapterText {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.85;
+  margin-top: 24px !important;
+  max-width: 400px;
+}
+.chapterFact {
+  border-top: 1px solid #353535;
+  margin-top: 27px;
+  padding-top: 17px;
+  font:
+    8px/1.7 "Courier New",
+    monospace;
+  letter-spacing: 0.06em;
+  color: #c4c4c4;
+}
+.chapterNote {
+  font-size: 11px;
+  color: #858585;
+  line-height: 1.7;
+  margin-top: 12px !important;
+  max-width: 390px;
+}
+.storyLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 12px;
+  margin-top: 24px;
+  color: #eee !important;
+}
+.storyLink:hover {
+  text-decoration: underline;
+}
+.stageColumn {
+  display: none;
+}
+.mobileVisual {
+  height: 400px;
+  margin-top: 30px;
+  background: #090909;
+  border: 1px solid #343434;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.stageToolbar {
+  padding: 16px 20px;
+  border-bottom: 1px solid #2d2d2d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font:
+    7px/1.6 "Courier New",
+    monospace;
+  letter-spacing: 0.08em;
+  color: #999;
+  flex-shrink: 0;
+}
+.stageToolbar > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.stageToolbar i {
+  width: 4px;
+  height: 4px;
+  background: #eee;
+  border-radius: 50%;
+}
+.stageCanvas {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+.stageGrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ffffff17 0.6px, transparent 0.6px);
+  background-size: 23px 23px;
+  mask-image: radial-gradient(ellipse, #000, transparent 75%);
+}
+.stageScene {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  opacity: 0;
+  transform: translateY(18px) scale(0.97);
+  transition:
+    opacity 0.65s ease,
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  visibility: hidden;
+}
+.stageScene[data-active="true"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
+.stageScene[data-active="false"] * {
+  animation-play-state: paused !important;
+}
+.continuityOrb {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transition:
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.8s;
+  transform: translate(-210px, -135px) scale(0.25);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 18px #ffffff22;
+}
+.continuityOrb:after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  background: #fff;
+  border-radius: 50%;
+}
+.story[data-story-step="1"] .continuityOrb {
+  transform: translate(-13px, -95px) scale(0.5);
+}
+.story[data-story-step="2"] .continuityOrb {
+  transform: translate(95px, -100px) scale(0.3);
+}
+.story[data-story-step="3"] .continuityOrb {
+  transform: translate(0, 70px) scale(0.25);
+  opacity: 0.4;
+}
+.story[data-story-step="4"] .continuityOrb {
+  transform: translate(145px, -130px) scale(0.3);
+}
+.chapterNav {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+  border-top: 1px solid #2d2d2d;
+  padding: 14px 17px 12px;
+  flex-shrink: 0;
+}
+.chapterNav button {
+  min-width: 0;
+  background: none;
+  border: 0;
+  padding: 3px;
+  color: #727272;
+  text-align: left;
+  cursor: pointer;
+  font:
+    8px/1.6 "Courier New",
+    monospace;
+  min-height: 46px;
+}
+.chapterNav button > span {
+  display: block;
+}
+.chapterNav button > i {
+  display: block;
+  height: 1px;
+  background: #333;
+  margin: 7px 0;
+  transition: background 0.3s;
+}
+.chapterNav button > small {
+  font-size: 6px;
+  display: block;
+  white-space: nowrap;
+}
+.chapterNav button[aria-current] {
+  color: #eee;
+}
+.chapterNav button[aria-current] > i {
+  background: #eee;
+}
+.chapterNav button:hover {
+  color: #fff;
+}
+.chapterNav button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 3px;
+}
+.stageFoot {
+  font:
+    6px/1.6 "Courier New",
+    monospace;
+  letter-spacing: 0.06em;
+  color: #707070;
+  padding: 0 20px 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-shrink: 0;
+}
+.storyOutro {
+  padding: 26px 0 29px;
+  border-top: 1px solid #333;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.storyOutro > span {
+  font:
+    8px "Courier New",
+    monospace;
+  letter-spacing: 0.1em;
+  color: #818181;
+}
+.storyOutro p {
+  font-size: 13px;
+  color: #a4a4a4;
+}
+.storyOutro strong {
+  color: #ddd;
+  font-weight: 400;
+}
+.storyOutro > a {
+  margin-left: auto;
+  font-size: 11px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+/* The stage only pins when there is enough room and motion is allowed. */
+.story[data-enhanced="true"] .storyBody {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 72px;
+  position: relative;
+  align-items: start;
+}
+.story[data-enhanced="true"] .chapter {
+  min-height: 78vh;
+  min-height: 78svh;
+  display: flex;
+  align-items: center;
+  padding: 8vh 0;
+  border-top: 0;
+  position: relative;
+}
+.story[data-enhanced="true"] .chapter:not([data-current="true"]) .chapterCopy {
+  opacity: 0.38;
+}
+.story[data-enhanced="true"] .chapterCopy {
+  transition: opacity 0.5s;
+}
+.story[data-enhanced="true"] .mobileVisual {
+  display: none;
+}
+.story[data-enhanced="true"] .stageColumn {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 14vh;
+  height: min(72vh, 620px);
+  border: 1px solid #3d3d3d;
+  background: linear-gradient(145deg, #161616, #090909 70%);
+  box-shadow: 0 20px 80px #0003;
+  overflow: hidden;
+}
+.story[data-enhanced="true"] .stageColumn:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #ddd;
+  transform: scaleX(var(--story-progress));
+  transform-origin: left;
+  pointer-events: none;
+}
+.story[data-moving="false"] .stageScene,
+.story[data-moving="false"] .continuityOrb,
+.story[data-moving="false"] .chapterCopy {
+  transition: none;
+}
+.changeVisual,
+.normalizeVisual,
+.evidenceVisual,
+.unknownVisual,
+.reviewVisual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.changeVisual {
+  padding: 15px 16px;
+  transform: translateY(calc((var(--chapter-progress) - 0.5) * -16px));
+}
+.codeBadge {
+  font:
+    8px/1.7 "Courier New",
+    monospace;
+  letter-spacing: 0.12em;
+  color: #969696;
+  margin-bottom: 15px;
+}
+.diffSheet {
+  border: 1px solid #515151;
+  background: #0a0a0a;
+  box-shadow: 14px 14px 0 #ffffff03;
+  transform: perspective(900px)
+    rotateY(calc((var(--chapter-progress) - 0.5) * -7deg));
+  transform-origin: left center;
+}
+.sheetTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #333;
+  color: #a5a5a5;
+  font:
+    9px/1.5 "Courier New",
+    monospace;
+}
+.sheetTop > span:last-child {
+  font-size: 15px;
+}
+.diffSheet pre {
+  font:
+    11px/1.9 "Courier New",
+    monospace;
+  padding: 15px 18px;
+  margin: 0;
+  color: #b2b2b2;
+  overflow: auto;
+}
+.removedLine,
+.addedLine {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  padding: 11px 17px;
+  font:
+    11px/1.5 "Courier New",
+    monospace;
+}
+.removedLine {
+  color: #777;
+  text-decoration: line-through;
+  background: #ffffff03;
+}
+.addedLine {
+  color: #fff;
+  background: #ffffff0b;
+  border-block: 1px solid #555;
+}
+.removedLine small,
+.addedLine small {
+  margin-left: auto;
+  font-size: 7px;
+  letter-spacing: 0.04em;
+}
+.sourceTag {
+  margin-top: 20px;
+  font-size: 10px;
+  color: #8a8a8a;
+}
+.normalizeVisual {
+  padding: 24px 5px;
+}
+.normalizeInput {
+  border: 1px solid #777;
+  background: #171717;
+  padding: 17px 20px;
+  align-self: center;
+  max-width: 100%;
+  display: grid;
+  gap: 10px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.normalizeInput > span {
+  font:
+    8px "Courier New",
+    monospace;
+  letter-spacing: 0.16em;
+  color: #ccc;
+}
+.normalizeInput code {
+  font:
+    11px "Courier New",
+    monospace;
+  color: #999;
+}
+.normalizeLines {
+  height: 130px;
+  width: 100%;
+  margin-top: -1px;
+}
+.tracedPath {
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--chapter-progress));
+  transition: stroke-dashoffset 0.1s linear;
+}
+.factNodes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: -9px;
+}
+.factNodes > div {
+  border: 1px solid #4a4a4a;
+  background: #111;
+  padding: 15px 8px;
+  text-align: center;
+  transform: translateY(calc((1 - var(--chapter-progress)) * 10px));
+}
+.factNodes span {
+  display: block;
+  font:
+    7px "Courier New",
+    monospace;
+  letter-spacing: 0.06em;
+  color: #888;
+}
+.factNodes code {
+  font:
+    9px/1.7 "Courier New",
+    monospace;
+  color: #eee;
+  display: block;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+}
+.normalizedStamp {
+  margin-top: 28px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  align-self: center;
+}
+.normalizedStamp > span {
+  font:
+    24px "Courier New",
+    monospace;
+  color: #777;
+}
+.normalizedStamp p {
+  font-size: 11px;
+  color: #888;
+  line-height: 1.7;
+}
+.normalizedStamp strong {
+  font-weight: 400;
+  color: #ccc;
+}
+.evidenceVisual {
+  justify-content: start;
+}
+.storyGlobe {
+  border: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  height: 100%;
+  justify-content: start !important;
+  align-items: center;
+}
+.storyGlobe > div:first-child,
+.storyGlobe > figcaption {
+  display: none !important;
+}
+.storyGlobe > div:nth-child(2) {
+  --globe-size: 210px;
+  width: 270px;
+  height: 260px;
+  margin: 0 auto;
+}
+.evidenceOverlay {
+  position: absolute;
+  bottom: 7px;
+  left: 5px;
+  right: 5px;
+  background: #101010ed;
+  border: 1px solid #595959;
+  padding: 16px 20px;
+}
+.evidenceOverlay > span {
+  font:
+    7px "Courier New",
+    monospace;
+  letter-spacing: 0.12em;
+  color: #999;
+}
+.evidenceOverlay > div {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 10px;
+}
+.evidenceOverlay code {
+  font:
+    14px "Courier New",
+    monospace;
+  color: #eee;
+}
+.evidenceOverlay i {
+  font-style: normal;
+  color: #666;
+}
+.evidenceOverlay p {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #b8b8b8;
+  margin-top: 9px !important;
+}
+.evidenceOverlay small {
+  display: block;
+  font:
+    7px "Courier New",
+    monospace;
+  color: #888;
+  margin-top: 10px;
+}
+.storyTerrain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  background: none;
+}
+.storyTerrain > div:first-child,
+.storyTerrain > div:last-child {
+  display: none;
+}
+.storyTerrain > svg:nth-of-type(2) {
+  top: 28%;
+  width: 100%;
+  opacity: 0.65;
+}
+.unknownCard {
+  position: relative;
+  z-index: 1;
+  border: 1px dashed #777;
+  background: #111111ed;
+  padding: 22px 24px;
+  margin: 28% 17px 0;
+}
+.unknownCard > span {
+  font:
+    7px "Courier New",
+    monospace;
+  letter-spacing: 0.12em;
+  color: #999;
+}
+.unknownCard code {
+  display: block;
+  margin-top: 16px;
+  font:
+    10px/1.7 "Courier New",
+    monospace;
+  color: #aaa;
+  overflow-wrap: anywhere;
+}
+.unknownCard strong {
+  display: block;
+  font:
+    23px/1.3 "Courier New",
+    monospace;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+  color: #ddd;
+  margin-top: 17px;
+}
+.unknownCard p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #969696;
+  margin-top: 14px !important;
+}
+.reviewVisual > div:first-child {
+  inset: 0;
+  height: 100%;
+  opacity: 0.65;
+  mask-image: none;
+}
+.reviewCard {
+  position: relative;
+  background: #0d0d0df5;
+  border: 1px solid #666;
+  margin: 15px 18px;
+  transform: translateY(calc((var(--chapter-progress) - 0.5) * -14px));
+  box-shadow: 0 20px 45px #0005;
+}
+.reviewStatus {
+  display: inline-block;
+  margin: 23px 23px 13px;
+  padding: 4px 8px;
+  background: #e9e9e9;
+  color: #111;
+  font:
+    7px/1.5 "Courier New",
+    monospace;
+}
+.reviewCard h4 {
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  margin: 0 23px 18px;
+}
+.reviewCard dl {
+  font:
+    9px/1.7 "Courier New",
+    monospace;
+  margin: 0 23px 20px;
+}
+.reviewCard dl > div {
+  padding: 8px 0;
+  border-top: 1px solid #333;
+}
+.reviewCard dt {
+  color: #777;
+}
+.reviewCard dd {
+  color: #bfbfbf;
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+.humanDecision {
+  border-top: 1px solid #444;
+  padding: 15px 23px;
+  font-size: 10px;
+  color: #c3c3c3;
+  background: #ffffff03;
+}
+@media (min-width: 960px) and (max-height: 800px) {
+  .stageScene {
+    padding: 15px;
+  }
+  .reviewCard {
+    margin: 8px;
+  }
+  .reviewStatus {
+    margin-top: 15px;
+  }
+  .reviewCard h4 {
+    font-size: 22px;
+  }
+  .reviewCard dl {
+    font-size: 8px;
+    margin-bottom: 10px;
+  }
+  .reviewCard dl > div {
+    padding: 4px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .reviewCard dd {
+    margin: 0;
+    text-align: right;
+  }
+  .humanDecision {
+    padding-block: 11px;
+  }
+  .evidenceOverlay {
+    padding: 12px 16px;
+    bottom: 0;
+  }
+  .storyGlobe > div:nth-child(2) {
+    --globe-size: 185px;
+    width: 235px;
+    height: 220px;
+  }
+  .evidenceOverlay code {
+    font-size: 12px;
+  }
+  .unknownCard {
+    padding: 17px;
+    margin-top: 24%;
+  }
+  .unknownCard strong {
+    font-size: 21px;
+  }
+  .normalizeLines {
+    height: 90px;
+  }
+  .normalizedStamp {
+    margin-top: 18px;
+  }
+  .factNodes > div {
+    padding: 12px 6px;
+  }
+  .diffSheet pre {
+    font-size: 10px;
+    padding-block: 10px;
+  }
+  .removedLine,
+  .addedLine {
+    padding-block: 9px;
+  }
+}
+@media (max-width: 1100px) {
+  .storyIntro,
+  .storyBody,
+  .storyOutro {
+    width: calc(100% - 72px);
+  }
+  .story[data-enhanced="true"] .storyBody {
+    gap: 40px;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+  .story .chapter h3 {
+    font-size: 32px;
+  }
+  .chapterText {
+    font-size: 12px;
+  }
+  .chapterNav {
+    gap: 5px;
+    padding-inline: 12px;
+  }
+  .chapterNav small {
+    font-size: 5.5px;
+  }
+  .stageToolbar {
+    font-size: 6px;
+  }
+  .stageFoot {
+    font-size: 5px;
+  }
+  .sheetTop {
+    font-size: 8px;
+  }
+}
+@media (max-width: 959px) {
+  .story {
+    padding-top: 70px;
+  }
+  .storyIntro > p:not(.eyebrow) {
+    font-size: 13px;
+  }
+  .storyBody {
+    margin-top: 36px;
+  }
+  .chapter {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 30px;
+    align-items: center;
+    padding-block: 35px;
+  }
+  .chapterCopy {
+    max-width: none;
+  }
+  .story .chapter h3 {
+    font-size: 28px;
+  }
+  .chapterText {
+    font-size: 12px;
+  }
+  .chapterFact {
+    font-size: 7px;
+  }
+  .chapterNote {
+    font-size: 10px;
+  }
+  .mobileVisual {
+    height: 390px;
+    margin: 0;
+  }
+  .changeVisual {
+    padding: 16px;
+  }
+  .codeBadge {
+    font-size: 6px;
+  }
+  .diffSheet pre {
+    font-size: 9px;
+    padding-inline: 12px;
+  }
+  .sheetTop {
+    font-size: 7px;
+    padding-inline: 12px;
+  }
+  .addedLine,
+  .removedLine {
+    font-size: 9px;
+    padding-inline: 12px;
+    gap: 9px;
+  }
+  .addedLine small,
+  .removedLine small {
+    font-size: 5px;
+  }
+  .sourceTag {
+    font-size: 9px;
+  }
+  .normalizeVisual {
+    padding-inline: 12px;
+  }
+  .normalizeInput {
+    padding: 15px 10px;
+  }
+  .normalizeInput code {
+    font-size: 9px;
+  }
+  .factNodes {
+    gap: 6px;
+  }
+  .factNodes code {
+    font-size: 7px;
+  }
+  .factNodes span {
+    font-size: 6px;
+  }
+  .factNodes > div {
+    padding: 13px 4px;
+  }
+  .normalizedStamp {
+    margin-inline: 8px;
+  }
+  .storyGlobe > div:nth-child(2) {
+    --globe-size: 210px;
+    width: 270px;
+    height: 265px;
+    margin-top: 3px;
+  }
+  .evidenceOverlay {
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
+    padding: 13px;
+  }
+  .evidenceOverlay code {
+    font-size: 12px;
+  }
+  .unknownCard {
+    margin: 35% 15px 0;
+    padding: 20px 17px;
+  }
+  .unknownCard strong {
+    font-size: 22px;
+  }
+  .reviewCard {
+    margin: 15px;
+  }
+  .reviewCard h4 {
+    font-size: 22px;
+  }
+  .reviewCard dl {
+    font-size: 8px;
+  }
+  .reviewCard dl > div {
+    padding: 5px 0;
+  }
+  .humanDecision {
+    font-size: 9px;
+  }
+  .storyOutro {
+    flex-wrap: wrap;
+    gap: 15px 25px;
+  }
+  .storyOutro p {
+    font-size: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .story {
+    padding-top: 60px;
+  }
+  .storyIntro,
+  .storyBody,
+  .storyOutro {
+    width: calc(100% - 40px);
+  }
+  .story .storyIntro h2 {
+    font-size: 35px;
+  }
+  .eyebrow {
+    font-size: 8px;
+  }
+  .storyIntro > p:not(.eyebrow) {
+    font-size: 12px;
+    margin-top: 21px !important;
+  }
+  .storyDisclaimer {
+    font-size: 6.5px;
+  }
+  .chapter {
+    display: block;
+    padding: 35px 0 36px;
+  }
+  .chapterKicker {
+    font-size: 8px;
+  }
+  .story .chapter h3 {
+    font-size: 30px;
+    margin-top: 23px !important;
+    max-width: 330px;
+  }
+  .chapterText {
+    font-size: 12px;
+    line-height: 1.85;
+    margin-top: 21px !important;
+  }
+  .chapterNote {
+    font-size: 11px;
+  }
+  .chapterFact {
+    font-size: 7px;
+  }
+  .mobileVisual {
+    margin-top: 25px;
+    height: 365px;
+  }
+  .changeVisual {
+    padding: 20px 16px;
+  }
+  .codeBadge {
+    font-size: 6.5px;
+  }
+  .sourceTag {
+    line-height: 1.7;
+    font-size: 9px;
+  }
+  .diffSheet pre {
+    font-size: 10px;
+  }
+  .addedLine,
+  .removedLine {
+    font-size: 10px;
+    padding-block: 12px;
+  }
+  .addedLine small,
+  .removedLine small {
+    font-size: 6px;
+  }
+  .normalizeInput code {
+    font-size: 10px;
+  }
+  .factNodes code {
+    font-size: 8px;
+  }
+  .normalizedStamp > span {
+    font-size: 23px;
+  }
+  .evidenceOverlay code {
+    font-size: 13px;
+  }
+  .evidenceOverlay p {
+    font-size: 10px;
+  }
+  .evidenceOverlay small {
+    font-size: 6px;
+  }
+  .storyGlobe > div:nth-child(2) {
+    --globe-size: 205px;
+    width: 260px;
+    height: 250px;
+  }
+  .unknownCard {
+    margin-top: 31%;
+    padding: 18px;
+  }
+  .unknownCard strong {
+    font-size: 24px;
+  }
+  .unknownCard p {
+    font-size: 11px;
+  }
+  .reviewCard {
+    margin: 12px 15px;
+  }
+  .reviewCard h4 {
+    font-size: 23px;
+  }
+  .reviewStatus {
+    margin-top: 16px;
+  }
+  .reviewCard dl {
+    margin-bottom: 15px;
+  }
+  .reviewCard dd {
+    font-size: 8px;
+  }
+  .reviewCard dl > div {
+    padding: 5px 0;
+  }
+  .humanDecision {
+    font-size: 10px;
+  }
+  .storyOutro {
+    padding-block: 23px 28px;
+    display: block;
+  }
+  .storyOutro > span {
+    font-size: 7px;
+  }
+  .storyOutro p {
+    margin-top: 11px !important;
+    font-size: 12px;
+  }
+  .storyOutro > a {
+    margin-top: 17px;
+    font-size: 11px;
+    display: inline-flex;
+  }
+  .stageScene {
+    transition: none;
+  }
+  .chapterCopy {
+    opacity: 1 !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story * {
+    transition: none !important;
+    animation: none !important;
+  }
+  .changeVisual,
+  .diffSheet,
+  .reviewCard,
+  .factNodes > div {
+    transform: none !important;
+  }
+  .tracedPath {
+    stroke-dashoffset: 0;
+  }
+  .chapterCopy {
+    opacity: 1 !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .story[data-enhanced="false"] .chapter {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .story[data-enhanced="false"] .mobileVisual {
+    margin-top: 0;
+  }
+}
