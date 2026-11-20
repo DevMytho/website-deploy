@@ -98,7 +98,7 @@ export function SiteHeader() {
 
         <div className="header-cta">
           <a className="btn-pill solid" href="/contact">
-            Contact ↗
+            Let&apos;s talk ↗
           </a>
         </div>
         <button

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ScrollStory } from "@/components/wci/ScrollStory";
-import { Navigation } from "@/components/wci/Navigation";
 import { PageExperience } from "@/components/wci/PageExperience";
 import { EvidenceOrbit } from "@/components/wci/EvidenceOrbit";
 import {
@@ -25,7 +24,6 @@ export default function WciPage() {
       <a className={s.skip} href="#main-content">
         Skip to content
       </a>
-      <Navigation />
       <main id="main-content">
         <section
           className={`${s.hero} ${s.container}`}
@@ -365,48 +363,6 @@ export default function WciPage() {
           </div>
         </section>
       </main>
-      <footer className={s.footer}>
-        <div className={s.container}>
-          <div className={s.footerTop}>
-            <div>
-              <a href="/" className={s.brand}>
-                <Mark />
-                <span>WAYNE CITADEL</span>
-              </a>
-              <p>
-                Careful engineering.
-                <br />
-                Clearer infrastructure decisions.
-              </p>
-            </div>
-            <div>
-              <span className={s.eyebrow}>EXPLORE WCI</span>
-              <a href="#workflow">How it works</a>
-              <a href="#security-preview">Analysis example</a>
-              <a href="#scope">Initial scope</a>
-            </div>
-            <div>
-              <span className={s.eyebrow}>GO DEEPER</span>
-              <a href="https://arhistrategstudio.github.io/wci-test-site/coverage.html">
-                Coverage reference <Arrow diagonal />
-              </a>
-              <a href="https://arhistrategstudio.github.io/wci-test-site/roadmap.html">
-                Roadmap reference <Arrow diagonal />
-              </a>
-              <a href="mailto:wci@waynegridtech.com">
-                Contact the team <Arrow diagonal />
-              </a>
-            </div>
-          </div>
-          <div className={s.footerBottom}>
-            <span>© 2026 Wayne Citadel</span>
-            <span>
-              <span className={s.smallDot} /> WCI is in early development.
-            </span>
-            <a href="#wci">Back to top ↑</a>
-          </div>
-        </div>
-      </footer>
     </PageExperience>
   );
 }
