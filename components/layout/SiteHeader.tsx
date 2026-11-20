@@ -8,6 +8,7 @@ import s from "./navigation.module.css";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/wci", label: "WCI" },
   { href: "/analysis", label: "Analysis & Coverage" },
   { href: "/roadmap", label: "Roadmap" },
@@ -97,7 +98,7 @@ export function SiteHeader() {
 
         <div className="header-cta">
           <a className="btn-pill solid" href="/contact">
-            Contact ↗
+            Let&apos;s talk ↗
           </a>
         </div>
         <button
