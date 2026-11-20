@@ -1,0 +1,13 @@
+# Deploy the application, not local research, recordings or generated output.
+.git/
+.next/
+.vercel/
+node_modules/
+artifacts/
+reference_materials/
+data/
+docs/
+AGENTS.md
+.env*
+*.log
+*.tsbuildinfo

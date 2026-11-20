@@ -4,6 +4,7 @@ import { useState, useRef, type FormEvent, type ChangeEvent, type FocusEvent } f
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+const FRONTEND_PREVIEW = process.env.NEXT_PUBLIC_FRONTEND_PREVIEW === "true";
 
 interface FormValues {
 	name: string;
@@ -79,6 +80,7 @@ export function ContactForm() {
 
 	async function handleSubmit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
+		if (FRONTEND_PREVIEW) return;
 
 		const nameErr = validateField("name", values.name);
 		const emailErr = validateField("email", values.email);
@@ -339,7 +341,8 @@ export function ContactForm() {
 				<motion.div variants={fieldVariants} style={{ paddingTop: "8px" }}>
 					<button
 						type="submit"
-						disabled={status === "pending"}
+						disabled={FRONTEND_PREVIEW || status === "pending"}
+						aria-describedby={FRONTEND_PREVIEW ? "contact-preview-note" : undefined}
 						className="contact-glass-btn"
 						aria-label={status === "pending" ? "Sending message..." : "Send message"}
 					>
@@ -370,6 +373,11 @@ export function ContactForm() {
 							</>
 						)}
 					</button>
+					{FRONTEND_PREVIEW && (
+						<p id="contact-preview-note" style={{ color: "var(--muted)", fontSize: "12px", lineHeight: 1.6, marginTop: "16px" }}>
+							Frontend preview. Message sending is disabled for this review.
+						</p>
+					)}
 				</motion.div>
 			</motion.div>
 

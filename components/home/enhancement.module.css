@@ -1,0 +1,813 @@
+.focusVisual {
+  --draw: 0;
+  --lift: 0px;
+  --signal-x: 230px;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  background: linear-gradient(145deg, #181818, #090909);
+  border: 1px solid #303030;
+  box-shadow: 0 18px 40px #0005;
+  overflow: hidden;
+}
+.visualLabel {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 17px;
+  border-bottom: 1px solid #303030;
+  color: #aaa;
+  font: 7px/1.6 var(--mono);
+  letter-spacing: 0.05em;
+}
+.focusVisual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.focusVisual text,
+.resourceGraph text {
+  font: 9px var(--mono);
+  fill: #bcbcbc;
+  letter-spacing: 0.035em;
+}
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--draw, 0);
+}
+.layerTop {
+  transform: translateY(var(--lift, 0px));
+}
+.resourceBlock {
+  transform: translateY(
+    calc(var(--resource-lift, 0px) * (1 + var(--resource-index, 0) * 0.2))
+  );
+}
+.focusSignal {
+  opacity: var(--focus-progress, 1);
+  filter: drop-shadow(0 0 4px #aaa);
+}
+.focusControls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 32px;
+  border-top: 1px solid #333;
+  padding: 0 10px;
+  gap: 3px;
+}
+.focusControls button {
+  font: 10px var(--sans);
+  padding: 13px 2px;
+  min-height: 40px;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  color: #aaa;
+}
+.focusControls button[aria-pressed="true"] {
+  color: #fff;
+  border-bottom-color: #ddd;
+  background: #ffffff04;
+}
+.focusControls button:hover {
+  color: #fff;
+  background: #ffffff06;
+}
+.focusCaption {
+  font: 11px/1.6 var(--sans) !important;
+  color: #bcbcbc !important;
+  margin: 0 !important;
+  padding: 12px 15px;
+  min-height: 59px;
+}
+.focusVisual .visualLabel {
+  font-size: 8px;
+}
+.focusVisual .visualFoot {
+  font-size: 8px;
+  line-height: 1.5;
+}
+.visualFoot {
+  padding: 12px 16px;
+  border-top: 1px solid #292929;
+  font: 6px var(--mono);
+  color: #aaa;
+  position: relative;
+  overflow: hidden;
+}
+.visualFoot i {
+  position: absolute;
+  left: 12px;
+  bottom: 0;
+  width: 22px;
+  height: 1px;
+  background: #eee;
+  transform: translateX(var(--signal-x, 230px));
+}
+.philosophySection {
+  --scene-progress: 1;
+  --structure: 1;
+  --validated: 1;
+  --uncertainty: 0;
+  background: radial-gradient(ellipse at 75% 45%, #1c1c1c, #0a0a0a 70%);
+  position: relative;
+  border-top: 1px solid #242424;
+  border-bottom: 1px solid #242424;
+  scroll-margin-top: 64px;
+}
+.philosophyPinned {
+  position: relative;
+  padding-top: 65px;
+  padding-bottom: 55px;
+}
+.philosophyLayout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 7%;
+}
+.philosophyLayout h2 {
+  font-size: clamp(36px, 4vw, 58px);
+}
+.phaseNav {
+  display: grid;
+  margin-top: 30px;
+}
+.phaseNav button {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  border: 0;
+  border-bottom: 1px solid #383838;
+  background: none;
+  color: #999;
+  font: 17px var(--sans);
+  padding: 18px 0;
+  text-align: left;
+  cursor: pointer;
+}
+.phaseNav button span {
+  font: 9px var(--mono);
+}
+.phaseNav button b {
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: auto;
+}
+.phaseNav button[aria-pressed="true"] {
+  color: #fff;
+}
+.phaseNav button[aria-pressed="true"] b {
+  transform: translate(3px, -3px);
+}
+.phaseCopies {
+  position: relative;
+  margin-top: 25px;
+}
+.phaseCopies article {
+  border-left: 1px solid #444;
+  padding-left: 18px;
+  margin-bottom: 23px;
+}
+.phaseCopies h3 {
+  font-size: 18px !important;
+  letter-spacing: -0.02em !important;
+}
+.phaseCopies p {
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 12px 0 0;
+  max-width: 410px;
+}
+.networkStage {
+  position: relative;
+  border: 1px solid #444;
+  background: linear-gradient(150deg, #151515, #090909);
+  box-shadow: 0 35px 80px #0008;
+  min-width: 0;
+}
+.networkStage:before,
+.networkStage:after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #aaa;
+  top: -3px;
+}
+.networkStage:before {
+  left: -3px;
+}
+.networkStage:after {
+  right: -3px;
+}
+.networkStage svg {
+  width: 100%;
+  display: block;
+}
+.networkStage text {
+  font: 8px var(--mono);
+  fill: #aaa;
+  letter-spacing: 0.05em;
+}
+.networkStage .validationLoop text {
+  fill: #111;
+}
+.networkLine {
+  opacity: calc(0.35 + var(--structure, 1) * 0.5);
+}
+.architectureBand {
+  opacity: var(--structure, 1);
+}
+.anomaly {
+  opacity: var(--uncertainty, 0);
+}
+.validationLoop {
+  opacity: var(--validated, 1);
+}
+.networkCaption {
+  padding: 16px 20px;
+  border-top: 1px solid #333;
+  font: 8px var(--mono);
+  color: #aaa;
+}
+.progressTrack {
+  height: 1px;
+  background: #333;
+  margin-top: 17px;
+  overflow: hidden;
+}
+.progressTrack i {
+  display: block;
+  transform: scaleX(var(--scene-progress, 1));
+  transform-origin: left;
+  background: #eee;
+  height: 100%;
+}
+.philosophyBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid #303030;
+  margin-top: 42px;
+  padding-top: 19px;
+  font: 8px var(--mono);
+  color: #aaa;
+}
+.philosophyBottom a {
+  color: #ddd;
+  text-decoration: none;
+}
+.philosophyBottom a span {
+  margin-left: 15px;
+}
+.philosophyBottom button {
+  border: 1px solid #555;
+  padding: 9px 12px;
+  background: #111;
+  color: #ddd;
+  font: 8px var(--mono);
+  cursor: pointer;
+}
+.philosophySection[data-enhanced="true"] {
+  height: 300svh;
+}
+.philosophySection[data-enhanced="true"] .philosophyPinned {
+  position: sticky;
+  top: 64px;
+  height: calc(100svh - 64px);
+  padding-top: 42px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.philosophySection[data-enhanced="true"] .philosophyPinned > :first-child {
+  margin-bottom: 30px;
+}
+.philosophySection[data-enhanced="true"] .phaseCopies {
+  min-height: 110px;
+}
+.philosophySection[data-enhanced="true"] .phaseCopies article {
+  display: none;
+}
+.philosophySection[data-enhanced="true"]
+  .phaseCopies
+  article[data-active="true"] {
+  display: block;
+  margin: 0;
+}
+.philosophySection[data-enhanced="true"] .phaseCopies h3 {
+  font-size: 14px !important;
+}
+.philosophySection[data-enhanced="true"] .philosophyBottom {
+  margin-top: 25px;
+}
+.philosophySection[data-enhanced="true"] .networkStage {
+  max-height: 100%;
+}
+.showcase {
+  --evidence: 1;
+  --finding: 1;
+  --trace: 0;
+  position: relative;
+}
+.showcase:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  width: 1px;
+  background: linear-gradient(transparent, #eee, transparent);
+  transform: scaleY(var(--finding));
+  transform-origin: top;
+}
+.showcaseTabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid #333;
+  padding: 0 20px;
+}
+.showcaseTabs button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  padding: 17px 0;
+  color: #999;
+  font: 10px var(--sans);
+  cursor: pointer;
+}
+.showcaseTabs button span {
+  font: 7px var(--mono);
+}
+.showcaseTabs button[aria-pressed="true"] {
+  border-color: #eee;
+  color: #fff;
+}
+.resourceGraph {
+  margin: 0 24px;
+  border-top: 1px solid #333;
+}
+.resourceGraph svg {
+  display: block;
+  width: 100%;
+}
+.tracePath {
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--trace, 0);
+}
+.evidenceChips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0 25px;
+  opacity: calc(0.85 + var(--evidence) * 0.15);
+  transform: translateY(calc((1 - var(--evidence)) * 9px));
+}
+.evidenceChips span {
+  font: 7px/1.5 var(--mono);
+  color: #999;
+  background: #ffffff04;
+  border: 1px solid #393939;
+  padding: 11px;
+}
+.evidenceChips b {
+  display: block;
+  margin-top: 8px;
+  color: #eee;
+  font-size: 11px;
+  font-weight: 400;
+}
+.sequenceFinding {
+  opacity: calc(0.85 + var(--finding) * 0.15);
+  transform: translateY(calc((1 - var(--finding)) * 12px));
+}
+.sequenceFinding h3 {
+  font-size: 23px !important;
+}
+.wciStageBody {
+  position: relative;
+  height: 435px;
+  overflow: hidden;
+}
+.wciStageBody > [data-wci-panel] {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity 0.4s,
+    transform 0.5s,
+    visibility 0.4s;
+  padding: 28px;
+}
+.showcase[data-phase="0"] [data-wci-panel="0"],
+.showcase[data-phase="1"] [data-wci-panel="1"],
+.showcase[data-phase="2"] [data-wci-panel="2"] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.stageEyebrow {
+  font: 9px/1.6 var(--mono) !important;
+  color: #aaa !important;
+  margin: 0 0 20px !important;
+  letter-spacing: 0.04em;
+}
+.stageTitle {
+  font: 400 29px/1.13 var(--sans) !important;
+  letter-spacing: -0.035em !important;
+  color: #eee;
+  margin: 0 0 24px !important;
+}
+.stageExplanation {
+  font: 12px/1.7 var(--sans) !important;
+  color: #bbb !important;
+  margin: 20px 0 0 !important;
+}
+.wciStageBody .changePanel pre {
+  margin: 20px 0 0;
+  line-height: 2;
+  font-size: 12px;
+}
+.evidencePanel .resourceGraph {
+  margin: 0;
+  border-top: 0;
+}
+.evidencePanel .evidenceChips {
+  margin: 12px 0 0;
+  opacity: 1;
+  transform: none;
+}
+.evidencePanel .stageExplanation {
+  font-size: 11px !important;
+}
+.reviewPanel > span {
+  display: block;
+  margin-top: 25px;
+}
+.reviewPanel h3 {
+  font-size: 30px !important;
+  margin: 16px 0 24px !important;
+  line-height: 1.15 !important;
+}
+.reviewFacts {
+  font: 10px/1.6 var(--mono);
+  margin: 25px 0;
+}
+.reviewFacts > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid #333;
+}
+.reviewFacts dt {
+  color: #999;
+}
+.reviewFacts dd {
+  margin: 0;
+  color: #eee;
+  text-align: right;
+}
+.reviewPanel .reviewDecision {
+  font: 8px var(--mono);
+  padding-top: 15px;
+  border-top: 1px solid #333;
+  color: #aaa;
+  margin-top: 22px;
+}
+.wciSequenceFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 20px;
+  border-top: 1px solid #333;
+  font: 9px/1.6 var(--sans);
+  color: #aaa;
+}
+.wciSequenceFooter button {
+  font: 9px var(--mono);
+  background: none;
+  color: #ddd;
+  border: 0;
+  cursor: pointer;
+  padding: 6px;
+  white-space: nowrap;
+}
+.showcaseTabs button {
+  min-height: 44px;
+  font-size: 12px;
+}
+.showcaseTabs button span {
+  font-size: 9px;
+}
+@media (max-width: 600px) {
+  .wciStageBody {
+    height: 460px;
+  }
+  .wciStageBody > [data-wci-panel] {
+    padding: 22px;
+  }
+  .reviewPanel h3 {
+    font-size: 27px !important;
+  }
+  .reviewFacts {
+    font-size: 9px;
+  }
+  .stageTitle {
+    font-size: 27px !important;
+  }
+  .stageEyebrow {
+    font-size: 8px !important;
+  }
+  .focusVisual .visualLabel {
+    font-size: 8px;
+  }
+  .focusControls button {
+    min-height: 44px;
+  }
+  .wciSequenceFooter {
+    font-size: 9px;
+    padding: 12px 15px;
+  }
+  .resourceGraph text {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wciStageBody > [data-wci-panel] {
+    transition: none !important;
+  }
+  .focusSignal {
+    filter: none;
+  }
+  .resourceBlock {
+    transform: none !important;
+  }
+}
+.thresholdEcho {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  --echo-scale: 1;
+  --echo-light: 1;
+}
+.thresholdEcho svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  opacity: var(--echo-light);
+  transform: scale(var(--echo-scale));
+  transform-origin: 50% 65%;
+}
+.thresholdEcho:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 72%, #ffffff07, transparent 55%);
+}
+.thresholdEcho > span {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font: 7px var(--mono);
+  letter-spacing: 0.14em;
+  color: #777;
+}
+@media (min-width: 960px) and (max-height: 800px) {
+  .philosophySection[data-enhanced="true"] .philosophyLayout h2 {
+    font-size: 40px;
+  }
+  .philosophySection[data-enhanced="true"] .phaseNav button {
+    padding: 12px 0;
+    font-size: 15px;
+  }
+  .philosophySection[data-enhanced="true"] .phaseCopies {
+    min-height: 90px;
+  }
+  .philosophySection[data-enhanced="true"] .networkStage {
+    max-width: 480px;
+  }
+  .philosophySection[data-enhanced="true"] .philosophyPinned {
+    padding-top: 22px;
+    padding-bottom: 18px;
+  }
+  .philosophySection[data-enhanced="true"] .philosophyPinned > :first-child {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 959px) {
+  .philosophyLayout {
+    gap: 35px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .philosophyLayout h2 {
+    font-size: 36px;
+  }
+  .philosophyBottom > span {
+    display: none;
+  }
+  .visualLabel {
+    font-size: 6px;
+  }
+  .focusVisual {
+    max-width: 450px;
+    margin: auto;
+  }
+  .phaseCopies h3 {
+    font-size: 16px !important;
+  }
+  .phaseCopies p {
+    font-size: 12px;
+  }
+  .philosophyBottom button {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .philosophyLayout {
+    grid-template-columns: 1fr;
+  }
+  .philosophyLayout h2 {
+    font-size: 36px;
+  }
+  .philosophyPinned {
+    padding-top: 45px;
+    padding-bottom: 40px;
+  }
+  .phaseNav {
+    margin-top: 23px;
+  }
+  .phaseNav button {
+    font-size: 16px;
+    padding: 15px 0;
+  }
+  .phaseCopies {
+    margin-top: 30px;
+  }
+  .phaseCopies article {
+    margin-bottom: 25px;
+  }
+  .networkCaption {
+    font-size: 7px;
+    padding: 14px;
+  }
+  .visualLabel {
+    font-size: 6px;
+  }
+  .visualFoot {
+    font-size: 6px;
+  }
+  .philosophyBottom {
+    margin-top: 30px;
+  }
+  .showcaseTabs {
+    padding: 0 10px;
+  }
+  .showcaseTabs button {
+    font-size: 9px;
+  }
+  .evidenceChips {
+    gap: 7px;
+    margin: 0 18px;
+  }
+  .evidenceChips span {
+    font-size: 6px;
+    padding: 9px;
+  }
+  .evidenceChips b {
+    font-size: 10px;
+  }
+  .resourceGraph {
+    margin: 0 18px;
+  }
+  .thresholdEcho svg {
+    width: 160%;
+    left: -30%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phaseCopies article {
+    display: block !important;
+    margin-bottom: 25px !important;
+  }
+  .philosophySection {
+    height: auto !important;
+  }
+  .philosophySection .philosophyPinned {
+    position: relative !important;
+    height: auto !important;
+  }
+  .focusVisual *,
+  .networkStage *,
+  .showcase *,
+  .thresholdEcho * {
+    transition: none !important;
+    animation: none !important;
+  }
+  .draw,
+  .tracePath {
+    stroke-dashoffset: 0 !important;
+  }
+  .layerTop {
+    transform: none !important;
+  }
+  .evidenceChips,
+  .sequenceFinding {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .thresholdEcho svg {
+    transform: none !important;
+  }
+}
+.directionSignal {
+  position: relative;
+  margin: 40px 0 -20px;
+  --direction-trace: 0;
+}
+.directionSignal svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.directionSignal > span {
+  font: 7px var(--mono);
+  color: #888;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-top: 12px;
+}
+.directionTrace {
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--direction-trace, 0);
+}
+@media (min-width: 960px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+  .philosophySection:not([data-paused="true"]) {
+    height: 300svh;
+  }
+}
+.focusVisual[data-manual="true"] .draw,
+.focusVisual[data-manual="true"] .layerTop,
+.focusVisual[data-manual="true"] .resourceBlock {
+  transition:
+    transform 0.5s,
+    stroke-dashoffset 0.6s;
+}
+.focusVisual[data-manual="true"] .focusSignal {
+  transition:
+    cx 0.6s,
+    cy 0.6s;
+}
+.wciStageBody > [data-wci-panel][aria-hidden="true"] {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+.structuralBridge {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 25px 38px;
+  --bridge-draw: 0;
+}
+.structuralBridge svg {
+  width: 100%;
+  height: 80px;
+  display: block;
+}
+.structuralBridge span {
+  display: block;
+  text-align: center;
+  font: 9px/1.7 var(--mono);
+  color: #aaa;
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+}
+.bridgeTrace {
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--bridge-draw);
+}
+@media (max-width: 600px) {
+  .structuralBridge {
+    padding: 0 22px 28px;
+  }
+  .structuralBridge svg {
+    height: 50px;
+  }
+  .structuralBridge span {
+    font-size: 8px;
+  }
+}

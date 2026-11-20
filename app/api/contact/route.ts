@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 import { NextResponse, type NextRequest } from "next/server";
-import { connectToDatabase } from "@/lib/db";
-import { Contact } from "@/lib/models/Contact";
 
 /* In-memory sliding rate limit store (IP -> array of timestamps).
    Single-instance dev/prod-small; move to a shared store (e.g. Redis) when
@@ -29,6 +27,12 @@ function isRateLimited(ip: string): boolean {
 const MAX_PAYLOAD_BYTES = 10_000;
 
 export async function POST(request: NextRequest) {
+	if (process.env.FRONTEND_PREVIEW === "true") {
+		return NextResponse.json(
+			{ error: "Message sending is disabled in this frontend preview." },
+			{ status: 503 },
+		);
+	}
 	try {
 		const ip =
 			request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -96,6 +100,12 @@ export async function POST(request: NextRequest) {
 
 		/* 3. Connect and store. The response is only sent after MongoDB
 		      confirms the insert. */
+		// Load database configuration only when a real submission needs it.
+		// This keeps frontend builds independent of backend credentials.
+		const [{ connectToDatabase }, { Contact }] = await Promise.all([
+			import("@/lib/db"),
+			import("@/lib/models/Contact"),
+		]);
 		await connectToDatabase();
 
 		await Contact.create({
