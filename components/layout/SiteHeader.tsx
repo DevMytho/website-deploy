@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion, LayoutGroup } from "framer-motion";
 
 import s from "./navigation.module.css";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -58,7 +59,7 @@ export function SiteHeader() {
           href="/"
           aria-label="Wayne Citadel home"
         >
-          <span aria-hidden="true">W</span> WAYNE CITADEL
+          <img className="brand-mark" src="/brand/wayne-citadel.png" width="36" height="36" alt="" /> WAYNE CITADEL
         </a>
 
         <LayoutGroup id="site-header-nav">
@@ -96,10 +97,13 @@ export function SiteHeader() {
           </nav>
         </LayoutGroup>
 
+        <div className="header-actions">
+        <ThemeToggle />
         <div className="header-cta">
           <a className="btn-pill solid" href="/contact">
             Let&apos;s talk ↗
           </a>
+        </div>
         </div>
         <button
           className={s.menu}

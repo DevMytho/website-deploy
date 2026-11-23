@@ -17,7 +17,7 @@
     30px Georgia,
     serif;
   letter-spacing: -0.12em;
-  color: #ddd;
+  color: var(--tone-dddddd, #ddd);
   margin-right: 4px;
 }
 .menu {
@@ -50,11 +50,11 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    border: 1px solid #555;
+    border: 1px solid var(--tone-555555, #555);
     padding: 10px 12px;
     font: 10px var(--mono);
-    color: #eee;
-    background: #111;
+    color: var(--tone-eeeeee, #eee);
+    background: var(--tone-111111, #111);
   }
   .nav {
     display: none !important;
@@ -64,8 +64,8 @@
     right: 0;
     flex-direction: column;
     padding: 18px;
-    background: #0d0d0d;
-    border-bottom: 1px solid #444;
+    background: var(--tone-0d0d0d, #0d0d0d);
+    border-bottom: 1px solid var(--tone-444444, #444);
     align-items: stretch !important;
   }
   .nav[data-open="true"] {

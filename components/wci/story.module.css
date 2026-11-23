@@ -1,9 +1,9 @@
 .story {
   --chapter-progress: 0.5;
   --story-progress: 0;
-  background: #0c0c0c;
-  color: #eee;
-  border-block: 1px solid #292929;
+  background: var(--tone-0c0c0c, #0c0c0c);
+  color: var(--tone-eeeeee, #eee);
+  border-block: 1px solid var(--tone-292929, #292929);
   padding: 95px 0 0;
   position: relative;
 }
@@ -15,10 +15,9 @@
 }
 .eyebrow {
   font:
-    9px/1.7 "Courier New",
-    monospace;
+    9px/1.7 var(--mono);
   letter-spacing: 0.14em;
-  color: #999;
+  color: var(--tone-999999, #999);
   margin-bottom: 20px !important;
 }
 .story .storyIntro h2 {
@@ -28,22 +27,21 @@
   letter-spacing: -0.05em;
 }
 .story .storyIntro h2 span {
-  color: #868686;
+  color: var(--tone-868686, #868686);
 }
 .storyIntro > p:not(.eyebrow) {
   font-size: 13px;
   line-height: 1.8;
-  color: #aaa;
+  color: var(--tone-aaaaaa, #aaa);
   max-width: 430px;
   margin-top: 24px !important;
 }
 .storyDisclaimer {
   margin-top: 24px;
   font:
-    8px/1.7 "Courier New",
-    monospace;
+    8px/1.7 var(--mono);
   letter-spacing: 0.08em;
-  color: #777;
+  color: var(--tone-777777, #777);
 }
 .storyBody {
   margin-top: 45px;
@@ -53,7 +51,7 @@
 }
 .chapter {
   padding: 40px 0 50px;
-  border-top: 1px solid #303030;
+  border-top: 1px solid var(--tone-303030, #303030);
   scroll-margin-top: 40px;
 }
 .chapterCopy {
@@ -64,15 +62,14 @@
   align-items: center;
   gap: 12px;
   font:
-    9px/1.7 "Courier New",
-    monospace;
+    9px/1.7 var(--mono);
   letter-spacing: 0.1em;
-  color: #a0a0a0;
+  color: var(--tone-a0a0a0, #a0a0a0);
 }
 .chapterKicker > span {
   font-size: 11px;
-  color: #fff;
-  border: 1px solid #555;
+  color: var(--tone-ffffff, #fff);
+  border: 1px solid var(--tone-555555, #555);
   width: 34px;
   height: 34px;
   display: grid;
@@ -87,24 +84,23 @@
 }
 .chapterText {
   font-size: 13px;
-  color: #aaa;
+  color: var(--tone-aaaaaa, #aaa);
   line-height: 1.85;
   margin-top: 24px !important;
   max-width: 400px;
 }
 .chapterFact {
-  border-top: 1px solid #353535;
+  border-top: 1px solid var(--tone-353535, #353535);
   margin-top: 27px;
   padding-top: 17px;
   font:
-    8px/1.7 "Courier New",
-    monospace;
+    8px/1.7 var(--mono);
   letter-spacing: 0.06em;
-  color: #c4c4c4;
+  color: var(--tone-c4c4c4, #c4c4c4);
 }
 .chapterNote {
   font-size: 11px;
-  color: #858585;
+  color: var(--tone-858585, #858585);
   line-height: 1.7;
   margin-top: 12px !important;
   max-width: 390px;
@@ -115,7 +111,7 @@
   gap: 20px;
   font-size: 12px;
   margin-top: 24px;
-  color: #eee !important;
+  color: var(--tone-eeeeee, #eee) !important;
 }
 .storyLink:hover {
   text-decoration: underline;
@@ -126,24 +122,23 @@
 .mobileVisual {
   height: 400px;
   margin-top: 30px;
-  background: #090909;
-  border: 1px solid #343434;
+  background: var(--tone-090909, #090909);
+  border: 1px solid var(--tone-343434, #343434);
   position: relative;
   overflow: hidden;
   isolation: isolate;
 }
 .stageToolbar {
   padding: 16px 20px;
-  border-bottom: 1px solid #2d2d2d;
+  border-bottom: 1px solid var(--tone-2d2d2d, #2d2d2d);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
   font:
-    7px/1.6 "Courier New",
-    monospace;
+    7px/1.6 var(--mono);
   letter-spacing: 0.08em;
-  color: #999;
+  color: var(--tone-999999, #999);
   flex-shrink: 0;
 }
 .stageToolbar > span:first-child {
@@ -154,7 +149,7 @@
 .stageToolbar i {
   width: 4px;
   height: 4px;
-  background: #eee;
+  background: var(--tone-eeeeee, #eee);
   border-radius: 50%;
 }
 .stageCanvas {
@@ -167,9 +162,9 @@
 .stageGrid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(#ffffff17 0.6px, transparent 0.6px);
+  background-image: radial-gradient(var(--tone-ffffff17, #ffffff17) 0.6px, transparent 0.6px);
   background-size: 23px 23px;
-  mask-image: radial-gradient(ellipse, #000, transparent 75%);
+  mask-image: radial-gradient(ellipse, var(--tone-000000, #000), transparent 75%);
 }
 .stageScene {
   position: absolute;
@@ -195,7 +190,7 @@
   position: absolute;
   width: 26px;
   height: 26px;
-  border: 1px solid #aaa;
+  border: 1px solid var(--tone-aaaaaa, #aaa);
   border-radius: 50%;
   left: 50%;
   top: 50%;
@@ -205,13 +200,13 @@
   transform: translate(-210px, -135px) scale(0.25);
   z-index: 3;
   pointer-events: none;
-  box-shadow: 0 0 18px #ffffff22;
+  box-shadow: 0 0 18px var(--tone-ffffff22, #ffffff22);
 }
 .continuityOrb:after {
   content: "";
   position: absolute;
   inset: 8px;
-  background: #fff;
+  background: var(--tone-ffffff, #fff);
   border-radius: 50%;
 }
 .story[data-story-step="1"] .continuityOrb {
@@ -231,7 +226,7 @@
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 9px;
-  border-top: 1px solid #2d2d2d;
+  border-top: 1px solid var(--tone-2d2d2d, #2d2d2d);
   padding: 14px 17px 12px;
   flex-shrink: 0;
 }
@@ -240,12 +235,11 @@
   background: none;
   border: 0;
   padding: 3px;
-  color: #727272;
+  color: var(--tone-727272, #727272);
   text-align: left;
   cursor: pointer;
   font:
-    8px/1.6 "Courier New",
-    monospace;
+    8px/1.6 var(--mono);
   min-height: 46px;
 }
 .chapterNav button > span {
@@ -254,7 +248,7 @@
 .chapterNav button > i {
   display: block;
   height: 1px;
-  background: #333;
+  background: var(--tone-333333, #333);
   margin: 7px 0;
   transition: background 0.3s;
 }
@@ -264,24 +258,23 @@
   white-space: nowrap;
 }
 .chapterNav button[aria-current] {
-  color: #eee;
+  color: var(--tone-eeeeee, #eee);
 }
 .chapterNav button[aria-current] > i {
-  background: #eee;
+  background: var(--tone-eeeeee, #eee);
 }
 .chapterNav button:hover {
-  color: #fff;
+  color: var(--tone-ffffff, #fff);
 }
 .chapterNav button:focus-visible {
-  outline: 1px solid #fff;
+  outline: 1px solid var(--tone-ffffff, #fff);
   outline-offset: 3px;
 }
 .stageFoot {
   font:
-    6px/1.6 "Courier New",
-    monospace;
+    6px/1.6 var(--mono);
   letter-spacing: 0.06em;
-  color: #707070;
+  color: var(--tone-707070, #707070);
   padding: 0 20px 14px;
   display: flex;
   justify-content: space-between;
@@ -290,24 +283,23 @@
 }
 .storyOutro {
   padding: 26px 0 29px;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--tone-333333, #333);
   display: flex;
   align-items: center;
   gap: 30px;
 }
 .storyOutro > span {
   font:
-    8px "Courier New",
-    monospace;
+    8px var(--mono);
   letter-spacing: 0.1em;
-  color: #818181;
+  color: var(--tone-818181, #818181);
 }
 .storyOutro p {
   font-size: 13px;
-  color: #a4a4a4;
+  color: var(--tone-a4a4a4, #a4a4a4);
 }
 .storyOutro strong {
-  color: #ddd;
+  color: var(--tone-dddddd, #ddd);
   font-weight: 400;
 }
 .storyOutro > a {
@@ -349,8 +341,8 @@
   position: sticky;
   top: 14vh;
   height: min(72vh, 620px);
-  border: 1px solid #3d3d3d;
-  background: linear-gradient(145deg, #161616, #090909 70%);
+  border: 1px solid var(--tone-3d3d3d, #3d3d3d);
+  background: linear-gradient(145deg, var(--tone-161616, #161616), var(--tone-090909, #090909) 70%);
   box-shadow: 0 20px 80px #0003;
   overflow: hidden;
 }
@@ -361,7 +353,7 @@
   left: 0;
   height: 2px;
   width: 100%;
-  background: #ddd;
+  background: var(--tone-dddddd, #ddd);
   transform: scaleX(var(--story-progress));
   transform-origin: left;
   pointer-events: none;
@@ -390,16 +382,15 @@
 }
 .codeBadge {
   font:
-    8px/1.7 "Courier New",
-    monospace;
+    8px/1.7 var(--mono);
   letter-spacing: 0.12em;
-  color: #969696;
+  color: var(--tone-969696, #969696);
   margin-bottom: 15px;
 }
 .diffSheet {
-  border: 1px solid #515151;
-  background: #0a0a0a;
-  box-shadow: 14px 14px 0 #ffffff03;
+  border: 1px solid var(--tone-515151, #515151);
+  background: var(--tone-0a0a0a, #0a0a0a);
+  box-shadow: 14px 14px 0 var(--tone-ffffff03, #ffffff03);
   transform: perspective(900px)
     rotateY(calc((var(--chapter-progress) - 0.5) * -7deg));
   transform-origin: left center;
@@ -410,22 +401,20 @@
   justify-content: space-between;
   gap: 15px;
   padding: 14px 18px;
-  border-bottom: 1px solid #333;
-  color: #a5a5a5;
+  border-bottom: 1px solid var(--tone-333333, #333);
+  color: var(--tone-a5a5a5, #a5a5a5);
   font:
-    9px/1.5 "Courier New",
-    monospace;
+    9px/1.5 var(--mono);
 }
 .sheetTop > span:last-child {
   font-size: 15px;
 }
 .diffSheet pre {
   font:
-    11px/1.9 "Courier New",
-    monospace;
+    11px/1.9 var(--mono);
   padding: 15px 18px;
   margin: 0;
-  color: #b2b2b2;
+  color: var(--tone-b2b2b2, #b2b2b2);
   overflow: auto;
 }
 .removedLine,
@@ -435,18 +424,17 @@
   align-items: center;
   padding: 11px 17px;
   font:
-    11px/1.5 "Courier New",
-    monospace;
+    11px/1.5 var(--mono);
 }
 .removedLine {
-  color: #777;
+  color: var(--tone-777777, #777);
   text-decoration: line-through;
-  background: #ffffff03;
+  background: var(--tone-ffffff03, #ffffff03);
 }
 .addedLine {
-  color: #fff;
-  background: #ffffff0b;
-  border-block: 1px solid #555;
+  color: var(--tone-ffffff, #fff);
+  background: var(--tone-ffffff0b, #ffffff0b);
+  border-block: 1px solid var(--tone-555555, #555);
 }
 .removedLine small,
 .addedLine small {
@@ -457,14 +445,14 @@
 .sourceTag {
   margin-top: 20px;
   font-size: 10px;
-  color: #8a8a8a;
+  color: var(--tone-8a8a8a, #8a8a8a);
 }
 .normalizeVisual {
   padding: 24px 5px;
 }
 .normalizeInput {
-  border: 1px solid #777;
-  background: #171717;
+  border: 1px solid var(--tone-777777, #777);
+  background: var(--tone-171717, #171717);
   padding: 17px 20px;
   align-self: center;
   max-width: 100%;
@@ -476,16 +464,14 @@
 }
 .normalizeInput > span {
   font:
-    8px "Courier New",
-    monospace;
+    8px var(--mono);
   letter-spacing: 0.16em;
-  color: #ccc;
+  color: var(--tone-cccccc, #ccc);
 }
 .normalizeInput code {
   font:
-    11px "Courier New",
-    monospace;
-  color: #999;
+    11px var(--mono);
+  color: var(--tone-999999, #999);
 }
 .normalizeLines {
   height: 130px;
@@ -504,8 +490,8 @@
   margin-top: -9px;
 }
 .factNodes > div {
-  border: 1px solid #4a4a4a;
-  background: #111;
+  border: 1px solid var(--tone-4a4a4a, #4a4a4a);
+  background: var(--tone-111111, #111);
   padding: 15px 8px;
   text-align: center;
   transform: translateY(calc((1 - var(--chapter-progress)) * 10px));
@@ -513,16 +499,14 @@
 .factNodes span {
   display: block;
   font:
-    7px "Courier New",
-    monospace;
+    7px var(--mono);
   letter-spacing: 0.06em;
-  color: #888;
+  color: var(--tone-888888, #888);
 }
 .factNodes code {
   font:
-    9px/1.7 "Courier New",
-    monospace;
-  color: #eee;
+    9px/1.7 var(--mono);
+  color: var(--tone-eeeeee, #eee);
   display: block;
   margin-top: 12px;
   overflow-wrap: anywhere;
@@ -536,18 +520,17 @@
 }
 .normalizedStamp > span {
   font:
-    24px "Courier New",
-    monospace;
-  color: #777;
+    24px var(--mono);
+  color: var(--tone-777777, #777);
 }
 .normalizedStamp p {
   font-size: 11px;
-  color: #888;
+  color: var(--tone-888888, #888);
   line-height: 1.7;
 }
 .normalizedStamp strong {
   font-weight: 400;
-  color: #ccc;
+  color: var(--tone-cccccc, #ccc);
 }
 .evidenceVisual {
   justify-content: start;
@@ -576,16 +559,15 @@
   bottom: 7px;
   left: 5px;
   right: 5px;
-  background: #101010ed;
-  border: 1px solid #595959;
+  background: var(--tone-101010ed, #101010ed);
+  border: 1px solid var(--tone-595959, #595959);
   padding: 16px 20px;
 }
 .evidenceOverlay > span {
   font:
-    7px "Courier New",
-    monospace;
+    7px var(--mono);
   letter-spacing: 0.12em;
-  color: #999;
+  color: var(--tone-999999, #999);
 }
 .evidenceOverlay > div {
   display: flex;
@@ -595,26 +577,24 @@
 }
 .evidenceOverlay code {
   font:
-    14px "Courier New",
-    monospace;
-  color: #eee;
+    14px var(--mono);
+  color: var(--tone-eeeeee, #eee);
 }
 .evidenceOverlay i {
   font-style: normal;
-  color: #666;
+  color: var(--tone-666666, #666);
 }
 .evidenceOverlay p {
   font-size: 11px;
   line-height: 1.6;
-  color: #b8b8b8;
+  color: var(--tone-b8b8b8, #b8b8b8);
   margin-top: 9px !important;
 }
 .evidenceOverlay small {
   display: block;
   font:
-    7px "Courier New",
-    monospace;
-  color: #888;
+    7px var(--mono);
+  color: var(--tone-888888, #888);
   margin-top: 10px;
 }
 .storyTerrain {
@@ -638,41 +618,38 @@
 .unknownCard {
   position: relative;
   z-index: 1;
-  border: 1px dashed #777;
-  background: #111111ed;
+  border: 1px dashed var(--tone-777777, #777);
+  background: var(--tone-111111ed, #111111ed);
   padding: 22px 24px;
   margin: 28% 17px 0;
 }
 .unknownCard > span {
   font:
-    7px "Courier New",
-    monospace;
+    7px var(--mono);
   letter-spacing: 0.12em;
-  color: #999;
+  color: var(--tone-999999, #999);
 }
 .unknownCard code {
   display: block;
   margin-top: 16px;
   font:
-    10px/1.7 "Courier New",
-    monospace;
-  color: #aaa;
+    10px/1.7 var(--mono);
+  color: var(--tone-aaaaaa, #aaa);
   overflow-wrap: anywhere;
 }
 .unknownCard strong {
   display: block;
   font:
-    23px/1.3 "Courier New",
-    monospace;
+    23px/1.3 var(--mono);
   letter-spacing: 0.04em;
   font-weight: 400;
-  color: #ddd;
+  color: var(--tone-dddddd, #ddd);
   margin-top: 17px;
 }
 .unknownCard p {
   font-size: 11px;
   line-height: 1.8;
-  color: #969696;
+  color: var(--tone-969696, #969696);
   margin-top: 14px !important;
 }
 .reviewVisual > div:first-child {
@@ -683,8 +660,8 @@
 }
 .reviewCard {
   position: relative;
-  background: #0d0d0df5;
-  border: 1px solid #666;
+  background: var(--tone-0d0d0df5, #0d0d0df5);
+  border: 1px solid var(--tone-666666, #666);
   margin: 15px 18px;
   transform: translateY(calc((var(--chapter-progress) - 0.5) * -14px));
   box-shadow: 0 20px 45px #0005;
@@ -693,11 +670,10 @@
   display: inline-block;
   margin: 23px 23px 13px;
   padding: 4px 8px;
-  background: #e9e9e9;
-  color: #111;
+  background: var(--tone-e9e9e9, #e9e9e9);
+  color: var(--tone-111111, #111);
   font:
-    7px/1.5 "Courier New",
-    monospace;
+    7px/1.5 var(--mono);
 }
 .reviewCard h4 {
   font-size: 25px;
@@ -708,28 +684,27 @@
 }
 .reviewCard dl {
   font:
-    9px/1.7 "Courier New",
-    monospace;
+    9px/1.7 var(--mono);
   margin: 0 23px 20px;
 }
 .reviewCard dl > div {
   padding: 8px 0;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--tone-333333, #333);
 }
 .reviewCard dt {
-  color: #777;
+  color: var(--tone-777777, #777);
 }
 .reviewCard dd {
-  color: #bfbfbf;
+  color: var(--tone-bfbfbf, #bfbfbf);
   margin: 4px 0 0;
   overflow-wrap: anywhere;
 }
 .humanDecision {
-  border-top: 1px solid #444;
+  border-top: 1px solid var(--tone-444444, #444);
   padding: 15px 23px;
   font-size: 10px;
-  color: #c3c3c3;
-  background: #ffffff03;
+  color: var(--tone-c3c3c3, #c3c3c3);
+  background: var(--tone-ffffff03, #ffffff03);
 }
 @media (min-width: 960px) and (max-height: 800px) {
   .stageScene {

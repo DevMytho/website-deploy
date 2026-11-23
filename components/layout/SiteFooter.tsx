@@ -6,7 +6,7 @@ export function SiteFooter() {
       <div className="wrap">
         <div className="footer-cols">
           <div className="footer-col">
-            <p className="footer-brand">WAYNE CITADEL</p>
+            <p className="footer-brand"><img className="brand-mark" src="/brand/wayne-citadel.png" width="36" height="36" alt="" /> WAYNE CITADEL</p>
             <p className="footer-note">
               Software. Infrastructure. Cybersecurity. Engineering with intent.
             </p>
