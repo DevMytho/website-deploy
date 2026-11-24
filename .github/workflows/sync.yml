@@ -41,11 +41,11 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Test mirror authentication
+      - name: Synchronize personal mirror
         env:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
-          run: |
-              git remote add mirror \
-                "https://x-access-token:${MIRROR_TOKEN}@github.com/DevMytho/website-deploy.git"
+        run: |
+          git remote add mirror \
+            "https://x-access-token:${MIRROR_TOKEN}@github.com/DevMytho/website-deploy.git"
 
-              git push mirror HEAD:refs/heads/main
+          git push mirror HEAD:refs/heads/main
