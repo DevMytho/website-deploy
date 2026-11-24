@@ -1,0 +1,51 @@
+
+name: Sync Production Mirror
+
+on:
+  workflow_run:
+    workflows:
+      - Next.js CI
+    types:
+      - completed
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-mirror-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync to Personal Repository
+
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout validated commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Synchronize personal mirror
+        env:
+          MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
+        run: |
+          git remote add mirror \
+            "https://x-access-token:${MIRROR_TOKEN}@github.com/DevMytho/website-deploy.git"
+
+          git push mirror HEAD:refs/heads/main
