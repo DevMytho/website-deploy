@@ -41,11 +41,16 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Synchronize personal mirror
+      - name: Test mirror authentication
         env:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
-          git remote add mirror \
-            "https://x-access-token:${MIRROR_TOKEN}@github.com/DevMytho/website-deploy.git"
+          if [ -z "$MIRROR_TOKEN" ]; then
+            echo "ERROR: MIRROR_TOKEN is empty or unavailable"
+            exit 1
+          fi
 
-          git push mirror HEAD:refs/heads/main
+          echo "Token is available."
+
+          git ls-remote \
+            "https://x-access-token:${MIRROR_TOKEN}@github.com/DevMytho/website-deploy.git"
